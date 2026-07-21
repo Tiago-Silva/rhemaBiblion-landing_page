@@ -307,10 +307,21 @@
           </div>
           <h3 class="font-heading font-bold text-lg text-white mb-1">Windows</h3>
           <p class="text-xs text-gray-400 mb-6">Instaladores .exe / .msi (Windows 10/11)</p>
-          <a href="https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion_0.1.0_x64-setup.exe" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2">
-            <i data-lucide="download" class="w-4 h-4"></i>
-            <span>Baixar Windows (.exe)</span>
-          </a>
+          <div class="relative w-full">
+            <button onclick="toggleDropdown('dropdown-win', event)" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Baixar Windows</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 ml-1"></i>
+            </button>
+            <div id="dropdown-win" class="hidden absolute top-full left-0 right-0 mt-2 bg-neutral-900 border border-white/10 rounded-xl shadow-xl z-20 overflow-hidden dropdown-menu">
+              <a href="https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion_0.1.0_x64-setup.exe" class="block px-4 py-2.5 text-xs text-gray-300 hover:bg-white/10 hover:text-white transition-colors text-left border-b border-white/5">
+                💻 Instalador Padrão (.exe)
+              </a>
+              <a href="https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion_0.1.0_x64_en-US.msi" class="block px-4 py-2.5 text-xs text-gray-300 hover:bg-white/10 hover:text-white transition-colors text-left">
+                🛠️ Instalador MSI (.msi)
+              </a>
+            </div>
+          </div>
         </div>
 
         <!-- Linux Card -->
@@ -319,11 +330,25 @@
             <i data-lucide="terminal" class="w-7 h-7"></i>
           </div>
           <h3 class="font-heading font-bold text-lg text-white mb-1">Linux</h3>
-          <p class="text-xs text-gray-400 mb-6">Pacotes .AppImage / .deb (Ubuntu/Debian)</p>
-          <a href="https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion_0.1.0_amd64.AppImage" class="w-full py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2">
-            <i data-lucide="download" class="w-4 h-4"></i>
-            <span>Baixar Linux (.AppImage)</span>
-          </a>
+          <p class="text-xs text-gray-400 mb-6">Pacotes .AppImage / .deb / .rpm</p>
+          <div class="relative w-full">
+            <button onclick="toggleDropdown('dropdown-linux', event)" class="w-full py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Baixar Linux</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 ml-1"></i>
+            </button>
+            <div id="dropdown-linux" class="hidden absolute top-full left-0 right-0 mt-2 bg-neutral-900 border border-white/10 rounded-xl shadow-xl z-20 overflow-hidden dropdown-menu">
+              <a href="https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion_0.1.0_amd64.AppImage" class="block px-4 py-2.5 text-xs text-gray-300 hover:bg-white/10 hover:text-white transition-colors text-left border-b border-white/5">
+                🐧 Executável AppImage (.AppImage)
+              </a>
+              <a href="https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion_0.1.0_amd64.deb" class="block px-4 py-2.5 text-xs text-gray-300 hover:bg-white/10 hover:text-white transition-colors text-left border-b border-white/5">
+                📦 Pacote Debian/Ubuntu (.deb)
+              </a>
+              <a href="https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion-0.1.0-1.x86_64.rpm" class="block px-4 py-2.5 text-xs text-gray-300 hover:bg-white/10 hover:text-white transition-colors text-left">
+                📦 Pacote RedHat/Fedora (.rpm)
+              </a>
+            </div>
+          </div>
         </div>
 
         <!-- macOS Card -->
@@ -333,10 +358,18 @@
           </div>
           <h3 class="font-heading font-bold text-lg text-white mb-1">macOS</h3>
           <p class="text-xs text-gray-400 mb-6">Imagem .dmg Universal (Intel & Apple Silicon)</p>
-          <a href="https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion_0.1.0_universal.dmg" class="w-full py-3 rounded-xl bg-purple-500 hover:bg-purple-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2">
-            <i data-lucide="download" class="w-4 h-4"></i>
-            <span>Baixar macOS (.dmg)</span>
-          </a>
+          <div class="relative w-full">
+            <button onclick="toggleDropdown('dropdown-mac', event)" class="w-full py-3 rounded-xl bg-purple-500 hover:bg-purple-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Baixar macOS</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 ml-1"></i>
+            </button>
+            <div id="dropdown-mac" class="hidden absolute top-full left-0 right-0 mt-2 bg-neutral-900 border border-white/10 rounded-xl shadow-xl z-20 overflow-hidden dropdown-menu">
+              <a href="https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion_0.1.0_universal.dmg" class="block px-4 py-2.5 text-xs text-gray-300 hover:bg-white/10 hover:text-white transition-colors text-left">
+                🍏 Imagem de Disco (.dmg)
+              </a>
+            </div>
+          </div>
         </div>
 
         <!-- Android Card -->
@@ -346,10 +379,21 @@
           </div>
           <h3 class="font-heading font-bold text-lg text-white mb-1">Android</h3>
           <p class="text-xs text-gray-400 mb-6">Instalador APK (.apk) para Celular/Tablet</p>
-          <a href="https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/app-universal-release.apk" class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2">
-            <i data-lucide="download" class="w-4 h-4"></i>
-            <span>Baixar APK Android</span>
-          </a>
+          <div class="relative w-full">
+            <button onclick="toggleDropdown('dropdown-android', event)" class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Baixar Android</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 ml-1"></i>
+            </button>
+            <div id="dropdown-android" class="hidden absolute top-full left-0 right-0 mt-2 bg-neutral-900 border border-white/10 rounded-xl shadow-xl z-20 overflow-hidden dropdown-menu">
+              <a href="https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/app-universal-release.apk" class="block px-4 py-2.5 text-xs text-gray-300 hover:bg-white/10 hover:text-white transition-colors text-left border-b border-white/5">
+                📱 APK Universal (.apk)
+              </a>
+              <a href="https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/app-release.apk" class="block px-4 py-2.5 text-xs text-gray-300 hover:bg-white/10 hover:text-white transition-colors text-left">
+                📱 APK Padrão (.apk)
+              </a>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -378,6 +422,26 @@
 
   <script>
     lucide.createIcons();
+
+    function toggleDropdown(id, event) {
+      event.stopPropagation();
+      const dropdown = document.getElementById(id);
+      const allDropdowns = document.querySelectorAll('.dropdown-menu');
+      
+      allDropdowns.forEach(d => {
+        if (d.id !== id) {
+          d.classList.add('hidden');
+        }
+      });
+      
+      dropdown.classList.toggle('hidden');
+    }
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', () => {
+      const allDropdowns = document.querySelectorAll('.dropdown-menu');
+      allDropdowns.forEach(d => d.classList.add('hidden'));
+    });
   </script>
 </body>
 </html>
