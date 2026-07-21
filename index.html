@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RhemaBiblion • Software de Estudo Bíblico & Exegese de Alta Performance</title>
+  <meta name="description" content="Software profissional de Estudo Bíblico, Sintaxe Teológica, Morfologia Interlinear e Diagramador de Sentenças. Multiplataforma para Windows, Linux, macOS e Android.">
+  
+  <!-- Google Fonts & Lucide Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800;900&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              900: '#78350f',
+            },
+            darkbg: '#090d16',
+            cardbg: '#111827',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Outfit', 'sans-serif'],
+            serif: ['Noto Serif', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #07090e;
+      color: #f3f4f6;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    .glass-card {
+      background: rgba(17, 24, 39, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-nav {
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #fde68a 0%, #f59e0b 50%, #d97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .glow-amber {
+      box-shadow: 0 0 50px -10px rgba(245, 158, 11, 0.3);
+    }
+    .glow-blue {
+      box-shadow: 0 0 50px -10px rgba(6, 182, 212, 0.25);
+    }
+    .tab-active {
+      border-bottom: 2px solid #f59e0b;
+      color: #fbbf24;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-amber-500/30 selection:text-amber-300">
+
+  <!-- Navbar Glass -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-neutral-950 font-serif font-bold text-xl shadow-lg shadow-amber-500/20">
+          Ω
+        </div>
+        <div class="flex flex-col">
+          <span class="font-heading font-extrabold text-lg tracking-wider text-white">rhemaBiblion</span>
+          <span class="text-[10px] text-amber-400/90 font-medium -mt-1 tracking-widest uppercase">High Performance Bible Study</span>
+        </div>
+      </div>
+
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+        <a href="#recursos" class="hover:text-amber-400 transition-colors">Recursos</a>
+        <a href="#diagramador" class="hover:text-amber-400 transition-colors">Diagramador Sintático</a>
+        <a href="#morfologia" class="hover:text-amber-400 transition-colors">Morfologia Interlinear</a>
+        <a href="#downloads" class="hover:text-amber-400 transition-colors">Downloads</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="#downloads" class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-neutral-950 font-bold text-xs shadow-lg shadow-amber-500/20 transition-all hover:scale-105">
+          Baixar Agora
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+    <!-- Ambient Light Orbs -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute top-1/3 left-1/4 w-[400px] h-[300px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      
+      <!-- Top Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold mb-8 animate-pulse">
+        <i data-lucide="sparkles" class="w-4 h-4"></i>
+        <span>Tecnologia Tauri v2 + Rust Engine + SQLite FTS5</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white max-w-5xl mx-auto leading-[1.1] mb-6">
+        Desvende a Profundidade do Texto Sagrado com <span class="gold-gradient-text">Exegese de Alta Performance</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-base sm:text-xl text-gray-400 max-w-3xl mx-auto font-normal leading-relaxed mb-10">
+        O software definitivo de Estudo Bíblico, Visualizador de Sintaxe Teológica, Morfologia Interlinear Grega e Hebraica e Diagramador de Sentenças 100% em Português do Brasil.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-16">
+        <a href="#downloads" class="px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-neutral-950 font-bold text-sm shadow-xl shadow-amber-500/25 transition-all hover:scale-105 flex items-center gap-2.5">
+          <i data-lucide="download" class="w-5 h-5"></i>
+          <span>Download Multiplataforma</span>
+        </a>
+        <a href="#recursos" class="px-7 py-4 rounded-xl glass-card hover:bg-white/10 text-white font-semibold text-sm transition-all flex items-center gap-2 border border-white/10">
+          <i data-lucide="play-circle" class="w-5 h-5 text-amber-400"></i>
+          <span>Conhecer Recursos</span>
+        </a>
+      </div>
+
+      <!-- Live Feature Preview Mockup Box -->
+      <div class="max-w-5xl mx-auto glass-card rounded-2xl p-4 sm:p-6 shadow-2xl border border-white/10 glow-amber relative">
+        <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+            <span class="text-xs text-gray-400 font-mono ml-2">RhemaBiblion • 1º Pedro 1:1-2 (SBLGNT / NVT)</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs text-amber-400 font-semibold bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
+            <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+            <span>60 FPS • SQLite & RAM Optimized</span>
+          </div>
+        </div>
+
+        <!-- Sample Mockup Reader Content -->
+        <div class="bg-black/60 rounded-xl p-5 text-left border border-white/5 space-y-4">
+          <div class="flex items-start gap-3 border-b border-white/5 pb-3">
+            <span class="font-bold text-amber-400 text-sm">1.1</span>
+            <div class="flex-1 space-y-1">
+              <p class="text-sm text-gray-200 leading-relaxed font-serif">
+                Eu, Simão Pedro, escravo e apóstolo de Jesus Cristo, escrevo esta carta a vocês que compartilham de nossa preciosa fé...
+              </p>
+
+              <!-- Interlinear Morphology Row -->
+              <div class="flex flex-wrap gap-2 pt-2">
+                <div class="bg-neutral-900 border border-amber-500/30 px-2.5 py-1 rounded text-center">
+                  <span class="text-xs font-bold text-white font-serif block">Πέτρος</span>
+                  <span class="text-[11px] font-bold text-amber-400 font-sans block">"Pedro"</span>
+                  <span class="text-[9px] text-gray-400 font-mono">G4074 • Substantivo</span>
+                </div>
+                <div class="bg-neutral-900 border border-amber-500/30 px-2.5 py-1 rounded text-center">
+                  <span class="text-xs font-bold text-white font-serif block">ἀπόστολος</span>
+                  <span class="text-[11px] font-bold text-amber-400 font-sans block">"apóstolo"</span>
+                  <span class="text-[9px] text-cyan-400 font-mono">G652 • Substantivo</span>
+                </div>
+                <div class="bg-neutral-900 border border-amber-500/30 px-2.5 py-1 rounded text-center">
+                  <span class="text-xs font-bold text-white font-serif block">Ἰησοῦ</span>
+                  <span class="text-[11px] font-bold text-amber-400 font-sans block">"Jesus"</span>
+                  <span class="text-[9px] text-amber-400 font-mono">G2424 • Nome Próprio</span>
+                </div>
+                <div class="bg-neutral-900 border border-amber-500/30 px-2.5 py-1 rounded text-center">
+                  <span class="text-xs font-bold text-white font-serif block">Χριστοῦ</span>
+                  <span class="text-[11px] font-bold text-amber-400 font-sans block">"Cristo"</span>
+                  <span class="text-[9px] text-amber-400 font-mono">G5547 • Título</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Features Grid Section -->
+  <section id="recursos" class="py-24 relative bg-darkbg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mb-4">
+          Ferramentas Avançadas para Exegese e Pregadores
+        </h2>
+        <p class="text-gray-400 text-base sm:text-lg">
+          Desenvolvido com arquitetura moderna offline-first em Rust para garantir velocidade instantânea e zero travamentos.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Card 1 -->
+        <div class="glass-card rounded-2xl p-7 hover:border-amber-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="git-graph" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">Diagramador Sintático</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Diagramação visual de frases com placas horizontais, divisores e modificadores interativos com exportação vetorial SVG, Markdown e JSON.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass-card rounded-2xl p-7 hover:border-cyan-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="languages" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">Morfologia Interlinear 100% pt-BR</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Mais de 443.880 vocábulos do Antigo (Hebraico) e Novo Testamento (Grego SBLGNT) totalmente traduzidos em Português do Brasil.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass-card rounded-2xl p-7 hover:border-purple-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="book-open-check" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">Dicionário Strong & Glossário</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Definições exegéticas completas, transliterações, códigos Strong e referências cruzadas integradas com busca instantânea.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="glass-card rounded-2xl p-7 hover:border-emerald-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="search-code" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">Busca Ultra-Rápida SQLite FTS5</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Pesquisa global em toda a Bíblia em menos de 3 milissegundos com renderização virtualizada de alta performance.
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="glass-card rounded-2xl p-7 hover:border-amber-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="layout-grid" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">Leitura Multi-Painel & Sincronizada</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Compare Bíblias em paralelo (NVT, NVI, ARC, KJV) com comentários teológicos e sincronização automática de versículos.
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="glass-card rounded-2xl p-7 hover:border-blue-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="smartphone" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">Totalmente Responsivo</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Interface moderna adaptativa para monitores widescreen, notebooks, tablets e celulares Android / iOS.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Downloads Multiplatform Section -->
+  <section id="downloads" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      
+      <div class="max-w-3xl mx-auto mb-16">
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mb-4">
+          Baixe o RhemaBiblion para o seu Dispositivo
+        </h2>
+        <p class="text-gray-400 text-base sm:text-lg">
+          Escolha a sua plataforma e faça o download dos instaladores oficiais compilados diretamente via GitHub Actions.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        
+        <!-- Windows Card -->
+        <div class="glass-card rounded-2xl p-6 text-center border border-white/10 hover:border-amber-500/50 transition-all flex flex-col items-center">
+          <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4">
+            <i data-lucide="monitor" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-white mb-1">Windows</h3>
+          <p class="text-xs text-gray-400 mb-6">Instaladores .exe / .msi (Windows 10/11)</p>
+          <a href="https://github.com/Tiago-Silva/rhemaBiblion/actions" target="_blank" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            <span>Baixar Windows (.exe)</span>
+          </a>
+        </div>
+
+        <!-- Linux Card -->
+        <div class="glass-card rounded-2xl p-6 text-center border border-white/10 hover:border-cyan-500/50 transition-all flex flex-col items-center">
+          <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4">
+            <i data-lucide="terminal" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-white mb-1">Linux</h3>
+          <p class="text-xs text-gray-400 mb-6">Pacotes .AppImage / .deb (Ubuntu/Debian)</p>
+          <a href="https://github.com/Tiago-Silva/rhemaBiblion/actions" target="_blank" class="w-full py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            <span>Baixar Linux (.AppImage)</span>
+          </a>
+        </div>
+
+        <!-- macOS Card -->
+        <div class="glass-card rounded-2xl p-6 text-center border border-white/10 hover:border-purple-500/50 transition-all flex flex-col items-center">
+          <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-4">
+            <i data-lucide="laptop" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-white mb-1">macOS</h3>
+          <p class="text-xs text-gray-400 mb-6">Imagem .dmg Universal (Intel & Apple Silicon)</p>
+          <a href="https://github.com/Tiago-Silva/rhemaBiblion/actions" target="_blank" class="w-full py-3 rounded-xl bg-purple-500 hover:bg-purple-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            <span>Baixar macOS (.dmg)</span>
+          </a>
+        </div>
+
+        <!-- Android Card -->
+        <div class="glass-card rounded-2xl p-6 text-center border border-white/10 hover:border-emerald-500/50 transition-all flex flex-col items-center">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-4">
+            <i data-lucide="smartphone" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-white mb-1">Android</h3>
+          <p class="text-xs text-gray-400 mb-6">Instalador APK (.apk) para Celular/Tablet</p>
+          <a href="https://github.com/Tiago-Silva/rhemaBiblion/actions" target="_blank" class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            <span>Baixar APK Android</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-12 bg-black/80 text-gray-400 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-serif font-bold text-sm">
+          Ω
+        </div>
+        <span class="font-heading font-bold text-white text-sm">RhemaBiblion Project</span>
+      </div>
+      <p>© 2026 RhemaBiblion. Licença de Estudo Bíblico & Exegese de Alta Performance.</p>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/Tiago-Silva/rhemaBiblion" target="_blank" class="hover:text-amber-400 transition-colors flex items-center gap-1">
+          <i data-lucide="github" class="w-4 h-4"></i>
+          <span>Repositório GitHub</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
