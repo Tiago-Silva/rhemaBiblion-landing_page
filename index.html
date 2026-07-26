@@ -380,27 +380,11 @@
           <h3 class="font-heading font-bold text-lg text-white mb-1">Móvel (Android & iOS)</h3>
           <p class="text-xs text-gray-400 mb-6">Instaladores oficiais para dispositivos móveis</p>
           <div class="relative w-full space-y-2">
-<!--            <a href="https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/download/v1.1.0/app-universal-release.apk"-->
-<!--               class="w-full py-3 rounded-xl bg-blue-500 hover:bg-blue-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer"-->
-<!--               target="_blank"-->
-<!--               rel="noopener noreferrer"-->
-<!--               download="app-universal-release.apk"-->
-<!--            >-->
-<!--              <span>Baixar APK Android</span>-->
-<!--            </a>-->
-            <button
-                    onclick="downloadApk('https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/download/v1.1.0/app-universal-release.apk')"
-                    class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
-            >
+            <a href="./public/app-universal-release.apk" class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer">
               <i data-lucide="download" class="w-4 h-4"></i>
-              <span id="apk-btn-text">Baixar APK Android</span>
-            </button>
-            <a href="https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/download/v1.1.0/rhemabiblion.ipa"
-               class="w-full py-3 rounded-xl bg-blue-500 hover:bg-blue-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
-               target="_blank"
-               rel="noopener noreferrer"
-               download="rhemabiblion.ipa"
-            >
+              <span>Baixar APK Android</span>
+            </a>
+            <a href="./public/rhemabiblion.ipa" class="w-full py-3 rounded-xl bg-blue-500 hover:bg-blue-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer">
               <i data-lucide="download" class="w-4 h-4"></i>
               <span>Baixar para iPhone (.ipa)</span>
             </a>
@@ -453,33 +437,6 @@
       const allDropdowns = document.querySelectorAll('.dropdown-menu');
       allDropdowns.forEach(d => d.classList.add('hidden'));
     });
-
-    async function downloadApk(url) {
-      const btnText = document.getElementById('apk-btn-text');
-      try {
-        btnText.innerText = "Iniciando download...";
-
-        const response = await fetch(url);
-        if (!response.ok) throw new Error("Erro no servidor");
-
-        const blob = await response.blob();
-        const blobUrl = window.URL.createObjectURL(blob);
-
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = blobUrl;
-        a.download = 'RhemaBiblion-Android.apk';
-        document.body.appendChild(a);
-        a.click();
-
-        window.URL.revokeObjectURL(blobUrl);
-        document.body.removeChild(a);
-        btnText.innerText = "Baixar APK Android";
-      } catch (err) {
-        // Se o CORS do GitHub bloquear o fetch, redireciona para a página oficial da Release
-        window.location.href = "https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/tag/v0.1.0";
-      }
-    }
   </script>
 </body>
 </html>
