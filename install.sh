@@ -57,16 +57,7 @@ chmod +x "$BIN_DIR/rhemabiblion"
 
 # 5. Fetch High Resolution Icon
 echo "Installing application launcher icon..."
-curl -L "https://tiago-silva.github.io/rhemaBiblion-landing_page/public/rhemabiblion.png" -o "$ICON_DIR/rhemabiblion.png"
-
-# Copy to standard fallback pixmaps folder for instant desktop launcher menu detection
-if [ "$EUID" -eq 0 ]; then
-    mkdir -p /usr/share/pixmaps
-    cp "$ICON_DIR/rhemabiblion.png" /usr/share/pixmaps/rhemabiblion.png
-else
-    mkdir -p "$HOME/.local/share/pixmaps"
-    cp "$ICON_DIR/rhemabiblion.png" "$HOME/.local/share/pixmaps/rhemabiblion.png"
-fi
+curl -L "https://tiago-silva.github.io/rhemaBiblion-landing_page/public/rhemabiblion.png" -o "$INSTALL_DIR/rhemabiblion.png"
 
 # 6. Create Desktop Menu Launcher Entry
 echo "Creating desktop shortcut entry..."
@@ -74,8 +65,8 @@ cat << EOF > "$DESKTOP_DIR/rhemabiblion.desktop"
 [Desktop Entry]
 Name=RhemaBiblion
 Comment=Leitura, Estudo e Análise Bíblica e Teológica
-Exec="$INSTALL_DIR/rhemabiblion.AppImage"
-Icon=rhemabiblion
+Exec=$INSTALL_DIR/rhemabiblion.AppImage
+Icon=$INSTALL_DIR/rhemabiblion.png
 Terminal=false
 Type=Application
 Categories=Education;Utility;
