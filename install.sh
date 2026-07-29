@@ -39,7 +39,14 @@ echo "Downloading AppImage from: $APPIMAGE_URL"
 curl -L "$APPIMAGE_URL" -o "$INSTALL_DIR/rhemabiblion.AppImage"
 chmod +x "$INSTALL_DIR/rhemabiblion.AppImage"
 
-# 4. Create launcher command in binary path
+# 4. Copy uninstall script to install directory for user convenience
+if [ -f "uninstall.sh" ]; then
+    echo "Copying uninstaller to application folder..."
+    cp uninstall.sh "$INSTALL_DIR/uninstall.sh"
+    chmod +x "$INSTALL_DIR/uninstall.sh"
+fi
+
+# 5. Create launcher command in binary path
 echo "Configuring executable path..."
 cat << EOF > "$BIN_DIR/rhemabiblion"
 #!/bin/sh
