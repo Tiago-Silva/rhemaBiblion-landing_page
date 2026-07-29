@@ -52,6 +52,15 @@ chmod +x "$BIN_DIR/rhemabiblion"
 echo "Installing application launcher icon..."
 curl -L "https://tiago-silva.github.io/rhemaBiblion-landing_page/public/rhemabiblion.png" -o "$ICON_DIR/rhemabiblion.png"
 
+# Copy to standard fallback pixmaps folder for instant desktop launcher menu detection
+if [ "$EUID" -eq 0 ]; then
+    mkdir -p /usr/share/pixmaps
+    cp "$ICON_DIR/rhemabiblion.png" /usr/share/pixmaps/rhemabiblion.png
+else
+    mkdir -p "$HOME/.local/share/pixmaps"
+    cp "$ICON_DIR/rhemabiblion.png" "$HOME/.local/share/pixmaps/rhemabiblion.png"
+fi
+
 # 6. Create Desktop Menu Launcher Entry
 echo "Creating desktop shortcut entry..."
 cat << EOF > "$DESKTOP_DIR/rhemabiblion.desktop"

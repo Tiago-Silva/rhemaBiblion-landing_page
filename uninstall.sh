@@ -25,7 +25,7 @@ if [ "$EUID" -ne 0 ]; then
     echo "Removing user shortcuts and binaries..."
     rm -rf "$INSTALL_DIR"
     rm -f "$BIN_DIR/rhemabiblion"
-    rm -f "$ICON_DIR/rhemabiblion.png"
+    rm -f "$ICON_DIR/rhemabiblion.png" "$HOME/.local/share/pixmaps/rhemabiblion.png"
     rm -f "$DESKTOP_DIR/rhemabiblion.desktop"
     
     echo "Removing local SQLite databases and settings ($USER_DATA_DIR)..."
@@ -45,7 +45,7 @@ else
     echo "Removing system-wide shortcuts and binaries..."
     rm -rf "$INSTALL_DIR"
     rm -f "$BIN_DIR/rhemabiblion"
-    rm -f "$ICON_DIR/rhemabiblion.png"
+    rm -f "$ICON_DIR/rhemabiblion.png" "/usr/share/pixmaps/rhemabiblion.png"
     rm -f "$DESKTOP_DIR/rhemabiblion.desktop"
     
     echo "Wiping root app data..."
