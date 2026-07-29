@@ -498,14 +498,14 @@
           <h3 class="font-heading font-bold text-lg text-white mb-1">Móvel (Android & iOS)</h3>
           <p class="text-xs text-gray-400 mb-6">Instaladores oficiais para dispositivos móveis</p>
           <div class="relative w-full space-y-2">
-            <a href="javascript:void(0)" onclick="downloadLatestAPK(event)" class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer">
+            <button type="button" onclick="downloadLatestAPK(event)" class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer border-none outline-none">
               <i data-lucide="download" class="w-4 h-4"></i>
               <span>Baixar APK Android</span>
-            </a>
-            <a href="javascript:void(0)" onclick="downloadLatestIPA(event)" class="w-full py-3 rounded-xl bg-blue-500 hover:bg-blue-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer">
+            </button>
+            <button type="button" onclick="downloadLatestIPA(event)" class="w-full py-3 rounded-xl bg-blue-500 hover:bg-blue-400 text-neutral-950 font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer border-none outline-none">
               <i data-lucide="download" class="w-4 h-4"></i>
               <span>Baixar para iPhone (.ipa)</span>
-            </a>
+            </button>
           </div>
         </div>
 
@@ -581,6 +581,16 @@
       allDropdowns.forEach(d => d.classList.add('hidden'));
     });
 
+    function triggerIframeDownload(url) {
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = url;
+      document.body.appendChild(iframe);
+      setTimeout(() => {
+        document.body.removeChild(iframe);
+      }, 6000);
+    }
+
     async function downloadLatestAPK(event) {
       event.preventDefault();
       const btn = event.currentTarget;
@@ -590,13 +600,10 @@
         const res = await fetch('https://api.github.com/repos/Tiago-Silva/rhemaBiblion-landing_page/releases/latest');
         const data = await res.json();
         const apkAsset = data.assets.find(a => a.name === 'app-universal-release.apk');
-        if (apkAsset && apkAsset.browser_download_url) {
-          window.location.href = apkAsset.browser_download_url;
-        } else {
-          window.location.href = 'https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/app-universal-release.apk';
-        }
+        const url = apkAsset ? apkAsset.browser_download_url : 'https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/app-universal-release.apk';
+        triggerIframeDownload(url);
       } catch (e) {
-        window.location.href = 'https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/app-universal-release.apk';
+        triggerIframeDownload('https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/app-universal-release.apk');
       } finally {
         setTimeout(() => { btn.innerHTML = originalText; }, 3000);
       }
@@ -611,13 +618,10 @@
         const res = await fetch('https://api.github.com/repos/Tiago-Silva/rhemaBiblion-landing_page/releases/latest');
         const data = await res.json();
         const ipaAsset = data.assets.find(a => a.name === 'rhemabiblion.ipa');
-        if (ipaAsset && ipaAsset.browser_download_url) {
-          window.location.href = ipaAsset.browser_download_url;
-        } else {
-          window.location.href = 'https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion.ipa';
-        }
+        const url = ipaAsset ? ipaAsset.browser_download_url : 'https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion.ipa';
+        triggerIframeDownload(url);
       } catch (e) {
-        window.location.href = 'https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion.ipa';
+        triggerIframeDownload('https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion.ipa');
       } finally {
         setTimeout(() => { btn.innerHTML = originalText; }, 3000);
       }
