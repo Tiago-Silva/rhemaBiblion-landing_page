@@ -1,12 +1,12 @@
 {
-  "version": "1.2.0",
-  "pub_date": "2026-07-29T13:50:00Z",
-  "notes": "Lançamento oficial da versão 1.2.0 com suporte a descompressão Zstd nativa, dicionário Gemini Exegético, notas de estudo personalizadas, leitor de livros teológicos e correção de atalhos e ícones para mobile e Linux.",
+  "version": "1.3.0",
+  "pub_date": "2026-08-01T13:00:00Z",
+  "notes": "Versão 1.3.0: Pesquisa temática por palavra-chave via engine Rust FTS5, layout responsivo nos painéis, seletor de tema no mobile, link sets aprimorados, migração de lógica crítica para Rust e correções gerais de estabilidade.",
   "downloads": {
-    "android": "https://tiago-silva.github.io/rhemaBiblion-landing_page/public/app-universal-release.apk",
-    "windows": "https://github.com/Tiago-Silva/rhemaBiblion/releases/latest/download/rhemabiblion_1.2.0_x64-setup.exe",
-    "macos": "https://github.com/Tiago-Silva/rhemaBiblion/releases/latest/download/rhemabiblion_1.2.0_universal.dmg",
-    "linux_appimage": "https://github.com/Tiago-Silva/rhemaBiblion/releases/latest/download/rhemabiblion_1.2.0_amd64.AppImage",
+    "android": "https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/app-universal-release.apk",
+    "windows": "https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion_1.3.0_x64-setup.exe",
+    "macos": "https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion_1.3.0_universal.dmg",
+    "linux_appimage": "https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion_1.3.0_amd64.AppImage",
     "linux_script": "https://tiago-silva.github.io/rhemaBiblion-landing_page/install.sh"
   }
 }
