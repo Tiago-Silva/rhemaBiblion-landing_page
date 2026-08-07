@@ -13,11 +13,11 @@
     },
     "darwin-x86_64": {
       "signature": "dW51c2VkX3NpZ25hdHVyZV9wbGFjZWhvbGRlcg==",
-      "url": "https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion_1.3.1_universal.dmg"
+      "url": "https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion_1.3.1_universal.app.tar.gz"
     },
     "darwin-aarch64": {
       "signature": "dW51c2VkX3NpZ25hdHVyZV9wbGFjZWhvbGRlcg==",
-      "url": "https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion_1.3.1_universal.dmg"
+      "url": "https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion_1.3.1_universal.app.tar.gz"
     }
   },
   "downloads": {
