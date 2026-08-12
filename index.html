@@ -590,16 +590,31 @@
         document.body.removeChild(iframe);
       }, 6000);
     }
+    async function fetchAssetUrl(pattern) {
+      try {
+        const res = await fetch('https://api.github.com/repos/Tiago-Silva/rhemaBiblion-landing_page/releases');
+        const releases = await res.json();
+        if (Array.isArray(releases)) {
+          for (const rel of releases) {
+            const asset = rel.assets?.find(a => a.name === pattern || a.name.endsWith(pattern) || a.name.includes(pattern));
+            if (asset) {
+              return asset.browser_download_url;
+            }
+          }
+        }
+      } catch (e) {
+        console.error("Erro ao buscar releases:", e);
+      }
+      return `https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/${pattern}`;
+    }
+
     async function downloadDesktopAsset(event, extensionOrPattern) {
       event.preventDefault();
       const link = event.currentTarget;
       const originalText = link.innerText;
       link.innerText = '⏳ Buscando última versão...';
       try {
-        const res = await fetch('https://api.github.com/repos/Tiago-Silva/rhemaBiblion-landing_page/releases/latest');
-        const data = await res.json();
-        const asset = data.assets.find(a => a.name.endsWith(extensionOrPattern) || a.name.includes(extensionOrPattern));
-        const url = asset ? asset.browser_download_url : `https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/${extensionOrPattern}`;
+        const url = await fetchAssetUrl(extensionOrPattern);
         triggerIframeDownload(url);
       } catch (e) {
         triggerIframeDownload(`https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/${extensionOrPattern}`);
@@ -608,17 +623,13 @@
       }
     }
 
-
     async function downloadLatestAPK(event) {
       event.preventDefault();
       const btn = event.currentTarget;
       const originalText = btn.innerHTML;
       btn.innerHTML = '<span class="animate-pulse">Preparando...</span>';
       try {
-        const res = await fetch('https://api.github.com/repos/Tiago-Silva/rhemaBiblion-landing_page/releases/latest');
-        const data = await res.json();
-        const apkAsset = data.assets.find(a => a.name === 'app-universal-release.apk');
-        const url = apkAsset ? apkAsset.browser_download_url : 'https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/app-universal-release.apk';
+        const url = await fetchAssetUrl('app-universal-release.apk');
         triggerIframeDownload(url);
       } catch (e) {
         triggerIframeDownload('https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/app-universal-release.apk');
@@ -633,10 +644,7 @@
       const originalText = btn.innerHTML;
       btn.innerHTML = '<span class="animate-pulse">Preparando...</span>';
       try {
-        const res = await fetch('https://api.github.com/repos/Tiago-Silva/rhemaBiblion-landing_page/releases/latest');
-        const data = await res.json();
-        const ipaAsset = data.assets.find(a => a.name === 'rhemabiblion.ipa');
-        const url = ipaAsset ? ipaAsset.browser_download_url : 'https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion.ipa';
+        const url = await fetchAssetUrl('rhemabiblion.ipa');
         triggerIframeDownload(url);
       } catch (e) {
         triggerIframeDownload('https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion.ipa');
