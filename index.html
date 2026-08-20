@@ -95,6 +95,7 @@
 
       <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
         <a href="#recursos" class="hover:text-amber-400 transition-colors">Recursos</a>
+        <a href="#sincronizacao" class="hover:text-amber-400 transition-colors">Sincronização Nuvem</a>
         <a href="#diagramador" class="hover:text-amber-400 transition-colors">Diagramador Sintático</a>
         <a href="#morfologia" class="hover:text-amber-400 transition-colors">Morfologia Interlinear</a>
         <a href="#downloads" class="hover:text-amber-400 transition-colors">Downloads</a>
@@ -216,9 +217,38 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
         
-        <!-- Card 1 -->
-        <div id="diagramador" class="glass-card rounded-2xl p-7 hover:border-brand-500/40 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-400 mb-6 group-hover:scale-110 transition-transform">
+        <!-- Card 1: Cloud Vault Sync & Multi-dispositivo -->
+        <div id="sincronizacao" class="glass-card rounded-2xl p-7 hover:border-amber-500/40 transition-all group border-amber-500/20 bg-amber-500/[0.02]">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="cloud-sync" class="w-6 h-6"></i>
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="font-heading font-bold text-xl text-white">Sincronização Vault no Google Drive</h3>
+            <span class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">Novo</span>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed mb-3">
+            Sincronize todo o seu <strong>Vault de Estudos (.md)</strong> e seus <strong>módulos instalados</strong> (Bíblias, comentários, dicionários e livros) entre Desktop e Celular via Google Drive com autenticação PKCE nativa e 100% offline-first.
+          </p>
+          <div class="p-2.5 rounded-xl bg-black/40 border border-amber-500/20 text-xs text-amber-200/90 flex items-start gap-2">
+            <i data-lucide="info" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+            <span><strong>Onde acessar:</strong> A sincronização fica localizada diretamente no <em>Painel de Estudos (Vault)</em>, permitindo conectar sua conta Google e monitorar os uploads/downloads em tempo real.</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Editor de Estudos Markdown Exegético -->
+        <div class="glass-card rounded-2xl p-7 hover:border-cyan-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="file-edit" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">Editor de Estudos & Citações</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Escreva sermões e comentários em Markdown enriquecido. Autocomplete exegético com menu <code class="text-cyan-400 bg-cyan-950/60 px-1 py-0.5 rounded text-xs">/</code>, citações bíblicas automáticas e exportação para PDF, DOCX e HTML.
+          </p>
+        </div>
+
+        <!-- Card 3: Diagramador Sintático -->
+        <div id="diagramador" class="glass-card rounded-2xl p-7 hover:border-purple-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform">
             <i data-lucide="git-graph" class="w-6 h-6"></i>
           </div>
           <h3 class="font-heading font-bold text-xl text-white mb-2">Diagramador Sintático</h3>
@@ -227,18 +257,29 @@
           </p>
         </div>
 
-        <!-- Card 2 -->
+        <!-- Card 4: Morfologia Interlinear -->
         <div id="morfologia" class="glass-card rounded-2xl p-7 hover:border-cyan-500/40 transition-all group">
           <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
             <i data-lucide="languages" class="w-6 h-6"></i>
           </div>
           <h3 class="font-heading font-bold text-xl text-white mb-2">Morfologia Interlinear 100% pt-BR</h3>
           <p class="text-gray-400 text-sm leading-relaxed">
-            Mais de 443.880 vocábulos do Antigo (Hebraico) e Novo Testamento (Grego SBLGNT) totalmente traduzidos em Português do Brasil com dicionário léxico integrado.
+            Mais de 443.880 vocábulos do Antigo (Hebraico WLC) e Novo Testamento (Grego SBLGNT) totalmente traduzidos em Português do Brasil com dicionário léxico integrado.
           </p>
         </div>
 
-        <!-- Card 3 -->
+        <!-- Card 5: Guia de Passagem -->
+        <div class="glass-card rounded-2xl p-7 hover:border-emerald-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="compass" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">Guia de Passagem & Relatórios</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Análise contextual instantânea de qualquer versículo: referências cruzadas, tópicos doutrinários, comentários agregados e notas de estudo em uma visão unificada.
+          </p>
+        </div>
+
+        <!-- Card 6: Dicionário Gemini -->
         <div class="glass-card rounded-2xl p-7 hover:border-purple-500/40 transition-all group">
           <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform">
             <i data-lucide="sparkles" class="w-6 h-6"></i>
@@ -249,7 +290,7 @@
           </p>
         </div>
 
-        <!-- Card 4 -->
+        <!-- Card 7: Busca SQLite FTS5 -->
         <div class="glass-card rounded-2xl p-7 hover:border-emerald-500/40 transition-all group">
           <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
             <i data-lucide="search-code" class="w-6 h-6"></i>
@@ -260,18 +301,18 @@
           </p>
         </div>
 
-        <!-- Card 5 -->
+        <!-- Card 8: Sincronização & Link Sets -->
         <div class="glass-card rounded-2xl p-7 hover:border-brand-500/40 transition-all group">
           <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-400 mb-6 group-hover:scale-110 transition-transform">
             <i data-lucide="layout-grid" class="w-6 h-6"></i>
           </div>
-          <h3 class="font-heading font-bold text-xl text-white mb-2">Sincronização & Link Sets</h3>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">Multi-Painéis & Link Sets A/B</h3>
           <p class="text-gray-400 text-sm leading-relaxed">
             Compare Bíblias, comentários, guias de passagem e dicionários em paralelo. Sincronização inteligente de rolagem focando o versículo lido em tempo real.
           </p>
         </div>
 
-        <!-- Card 6 -->
+        <!-- Card 9: Leitor de Livros EPUB / PDF -->
         <div class="glass-card rounded-2xl p-7 hover:border-blue-500/40 transition-all group">
           <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-transform">
             <i data-lucide="book-open" class="w-6 h-6"></i>
@@ -282,18 +323,7 @@
           </p>
         </div>
 
-        <!-- Card 7 -->
-        <div class="glass-card rounded-2xl p-7 hover:border-red-500/40 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 mb-6 group-hover:scale-110 transition-transform">
-            <i data-lucide="pencil" class="w-6 h-6"></i>
-          </div>
-          <h3 class="font-heading font-bold text-xl text-white mb-2">Notas de Estudo & Grifos</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
-            Registre notas de estudos associadas a versículos. Crie destaques coloridos com respostas visuais instantâneas e otimistas no cache.
-          </p>
-        </div>
-
-        <!-- Card 8 -->
+        <!-- Card 10: Otimização Zstd -->
         <div class="glass-card rounded-2xl p-7 hover:border-indigo-500/40 transition-all group">
           <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 mb-6 group-hover:scale-110 transition-transform">
             <i data-lucide="cloud-lightning" class="w-6 h-6"></i>
@@ -304,7 +334,18 @@
           </p>
         </div>
 
-        <!-- Card 9 -->
+        <!-- Card 11: Notas de Estudo & Grifos -->
+        <div class="glass-card rounded-2xl p-7 hover:border-red-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="pencil" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">Notas de Estudo & Grifos</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Registre notas de estudos associadas a versículos. Crie destaques coloridos com respostas visuais instantâneas e otimistas no cache.
+          </p>
+        </div>
+
+        <!-- Card 12: Totalmente Multiplataforma -->
         <div class="glass-card rounded-2xl p-7 hover:border-yellow-500/40 transition-all group">
           <div class="w-12 h-12 rounded-xl bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center text-yellow-400 mb-6 group-hover:scale-110 transition-transform">
             <i data-lucide="smartphone" class="w-6 h-6"></i>

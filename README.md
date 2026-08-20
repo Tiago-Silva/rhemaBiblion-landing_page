@@ -8,11 +8,13 @@
 
 * **Design de Alto Nível (SaaS Comercial):** Modo escuro com glassmorphism, degradês dourados e tipografia refinada.
 * **Demonstração em Tempo Real (Mockup):** Exibição interativa da Morfologia Interlinear com lemas gregos/hebraicos e traduções em Português do Brasil.
+* **Sincronização em Nuvem (Google Drive Vault):** Sincronização automática entre Desktop e Dispositivos Móveis para notas, sermões em Markdown e módulos instalados diretamente pelo *Painel de Estudos*.
 * **Hub Oficial de Downloads Multiplataforma:**
   * 💻 **Windows:** Instaladores `.exe` e `.msi`
-  * 🐧 **Linux:** Pacotes `.AppImage` e `.deb`
-  * 🍏 **macOS:** Imagens `.dmg` universais
-  * 📱 **Android:** Arquivo `.apk` para smartphones e tablets
+  * 🐧 **Linux:** Pacotes `.AppImage`, `.deb`, `.rpm` e script de instalação automática
+  * 🍏 **macOS:** Imagens `.dmg` universais (Intel e Apple Silicon)
+  * 📱 **Android:** Arquivo `.apk` oficial para smartphones e tablets
+  * 📱 **iOS:** Arquivo `.ipa` para iPhone/iPad
 
 ---
 
