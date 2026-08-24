@@ -635,9 +635,32 @@
       try {
         const res = await fetch('https://api.github.com/repos/Tiago-Silva/rhemaBiblion-landing_page/releases');
         const releases = await res.json();
-        if (Array.isArray(releases)) {
+        if (Array.isArray(releases) && releases.length > 0) {
+          // 1. Prioriza a release mais recente (índice 0)
+          const latestRelease = releases[0];
+          let asset = latestRelease.assets?.find(a => {
+            const name = a.name.toLowerCase();
+            const pat = pattern.toLowerCase();
+            if (pat === 'apk' || pat === '.apk' || pat.includes('apk')) {
+              return name.endsWith('.apk') && !name.includes('unsigned');
+            }
+            return name === pat || name.endsWith(pat) || name.includes(pat);
+          });
+
+          if (asset) {
+            return asset.browser_download_url;
+          }
+
+          // 2. Se não encontrar na release mais recente, varre as outras
           for (const rel of releases) {
-            const asset = rel.assets?.find(a => a.name === pattern || a.name.endsWith(pattern) || a.name.includes(pattern));
+            asset = rel.assets?.find(a => {
+              const name = a.name.toLowerCase();
+              const pat = pattern.toLowerCase();
+              if (pat === 'apk' || pat === '.apk' || pat.includes('apk')) {
+                return name.endsWith('.apk') && !name.includes('unsigned');
+              }
+              return name === pat || name.endsWith(pat) || name.includes(pat);
+            });
             if (asset) {
               return asset.browser_download_url;
             }
@@ -670,7 +693,7 @@
       const originalText = btn.innerHTML;
       btn.innerHTML = '<span class="animate-pulse">Preparando...</span>';
       try {
-        const url = await fetchAssetUrl('app-universal-release.apk');
+        const url = await fetchAssetUrl('.apk');
         triggerIframeDownload(url);
       } catch (e) {
         triggerIframeDownload('https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/app-universal-release.apk');
@@ -685,7 +708,7 @@
       const originalText = btn.innerHTML;
       btn.innerHTML = '<span class="animate-pulse">Preparando...</span>';
       try {
-        const url = await fetchAssetUrl('rhemabiblion.ipa');
+        const url = await fetchAssetUrl('.ipa');
         triggerIframeDownload(url);
       } catch (e) {
         triggerIframeDownload('https://github.com/Tiago-Silva/rhemaBiblion-landing_page/releases/latest/download/rhemabiblion.ipa');
